@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Documentation - ECommerce Monorepo</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --heading-color: #333333;
+      --card-bg: #f5f5f5;
+      --card-border: #e0e0e0;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+      --link-color: #007aff;
+      --toggle-bg: #e0e0e0;
+      --toggle-icon: #666666;
+      --subtitle-color: #666666;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --heading-color: #ffffff;
+      --card-bg: #2a2a2a;
+      --card-border: #3a3a3a;
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --link-color: #0a84ff;
+      --toggle-bg: #3a3a3a;
+      --toggle-icon: #e0e0e0;
+      --subtitle-color: #999999;
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    h1 {
+      color: var(--heading-color);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .theme-toggle {
+      background: var(--toggle-bg);
+      border: none;
+      border-radius: 20px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.8;
+    }
+
+    .intro {
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px var(--card-shadow);
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px var(--card-shadow);
+    }
+
+    .package-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card-image-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 14px;
+      padding-top: 14px;
+      padding-right: 14px;
+      box-sizing: border-box;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--link-color);
+      margin: 0 0 10px 0;
+    }
+
+    .card-description {
+      color: var(--subtitle-color);
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>ECommerce Monorepo Documentation</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </div>
+  <p class="intro">Welcome to the documentation for the ECommerce monorepo packages.</p>
+  <ul class="package-grid" id="packageGrid">
+    <!-- Cards will be dynamically generated here -->
+  </ul>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+    const packageGrid = document.getElementById('packageGrid');
+    let themeImages = [];
+
+    // Load packages and generate cards
+    const loadPackages = async () => {
+      try {
+        const response = await fetch('packages.json');
+        const packages = await response.json();
+
+        packages.forEach(pkg => {
+          // Create card element
+          const card = document.createElement('li');
+          card.className = 'package-card';
+
+          const link = document.createElement('a');
+          link.href = pkg.path;
+
+          // Image container
+          const imageContainer = document.createElement('div');
+          imageContainer.className = 'card-image-container';
+
+          const img = document.createElement('img');
+          img.className = 'card-image theme-image';
+          img.setAttribute('data-light', `https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/light/${pkg.image}.png`);
+          img.setAttribute('data-dark', `https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/dark/${pkg.image}.png`);
+          img.alt = pkg.title;
+
+          imageContainer.appendChild(img);
+
+          // Card content
+          const cardContent = document.createElement('div');
+          cardContent.className = 'card-content';
+
+          const title = document.createElement('h2');
+          title.className = 'card-title';
+          title.textContent = pkg.title;
+
+          const description = document.createElement('p');
+          description.className = 'card-description';
+          description.textContent = pkg.description;
+
+          cardContent.appendChild(title);
+          cardContent.appendChild(description);
+
+          link.appendChild(imageContainer);
+          link.appendChild(cardContent);
+          card.appendChild(link);
+
+          packageGrid.appendChild(card);
+          themeImages.push(img);
+        });
+
+        // Update images after all cards are loaded
+        updateImages(getThemePreference());
+      } catch (err) {
+        console.error('Failed to load packages:', err);
+      }
+    };
+
+    // Update images based on theme
+    const updateImages = (theme) => {
+      themeImages.forEach(img => {
+        const newSrc = theme === 'dark' ? img.dataset.dark : img.dataset.light;
+        img.src = newSrc;
+      });
+    };
+
+    // Check for saved theme preference or default to system preference
+    const getThemePreference = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    // Apply theme
+    const applyTheme = (theme) => {
+      html.setAttribute('data-theme', theme);
+      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      updateImages(theme);
+      localStorage.setItem('theme', theme);
+    };
+
+    // Initialize theme and load packages
+    applyTheme(getThemePreference());
+    loadPackages();
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+</body>
+</html>
