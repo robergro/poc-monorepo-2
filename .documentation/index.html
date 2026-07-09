@@ -248,10 +248,7 @@
 </head>
 <body>
   <div class="header-logo">
-    <img src="https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/spark.svg" alt="Spark">
-  </div>
-  <div class="header-logo">
-    <img src="`https://raw.githubusercontent.com/robergro/poc-monorepo/tree/main/.documentation/spark.svg`" alt="Spark">
+    <img src="assets/spark.svg" alt="Spark">
   </div>
   <div class="header">
     <h1>ECommerce Monorepo Documentation</h1>
@@ -270,7 +267,7 @@
     </p>
     <div class="footer-github">
       <a href="https://github.com/leboncoin/spark-ios" target="_blank" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/github.svg" alt="GitHub" id="githubIcon">
+        <img src="assets/light/github.svg" alt="GitHub" id="githubIcon">
         View on GitHub
       </a>
     </div>
@@ -345,7 +342,7 @@
               zhButton.title = 'View on zeroheight';
 
               const zhIcon = document.createElement('img');
-              zhIcon.src = 'https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/zeroheight.svg';
+              zhIcon.src = 'assets/zeroheight.svg';
               zhIcon.alt = 'zeroheight';
 
               zhButton.appendChild(zhIcon);
@@ -364,7 +361,7 @@
               figmaButton.title = 'View on Figma';
 
               const figmaIcon = document.createElement('img');
-              figmaIcon.src = 'https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/figma.svg';
+              figmaIcon.src = 'assets/figma.svg';
               figmaIcon.alt = 'Figma';
 
               figmaButton.appendChild(figmaIcon);
@@ -402,8 +399,8 @@
       // Update GitHub icon
       if (githubIcon) {
         const githubIconSrc = theme === 'dark'
-          ? 'https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/dark/github.svg'
-          : 'https://raw.githubusercontent.com/robergro/poc-monorepo/main/.github/assets/light/github.svg';
+          ? 'assets/dark/github.svg'
+          : 'assets/light/github.svg';
         githubIcon.src = githubIconSrc;
       }
     };

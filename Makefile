@@ -105,9 +105,9 @@ docc:
 			echo ""; \
 		fi; \
 	done; \
-	if [ -f ".documentation/index.html" ]; then \
-		cp .documentation/index.html $(DOCC_OUTPUT_PATH)/index.html; \
-		echo "Copied index.html to $(DOCC_OUTPUT_PATH)/"; \
+	if [ -d ".documentation" ]; then \
+		cp -r .documentation/* $(DOCC_OUTPUT_PATH)/; \
+		echo "Copied all files from .documentation/ to $(DOCC_OUTPUT_PATH)/"; \
 	fi; \
 	echo ""; \
 	echo "Generating packages.json with metadata..."; \

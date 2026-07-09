@@ -34,9 +34,6 @@ jobs:
         run: mkdir -p ${{ env.doc_path }}
       - name: Build DocC 
         run: make docc DOCC_OUTPUT_PATH=${{ env.doc_path }} HOSTING_BASE_PATH=${{ env.repo_name }}
-      - name: Copy index page
-        run: |
-          cp .documentation/index.html ${{ env.doc_path }}/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
