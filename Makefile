@@ -105,8 +105,8 @@ docc:
 			echo ""; \
 		fi; \
 	done; \
-	if [ -f ".github/workflows/index.html" ]; then \
-		cp .github/workflows/index.html $(DOCC_OUTPUT_PATH)/index.html; \
+	if [ -f ".documentation/index.html" ]; then \
+		cp .documentation/index.html $(DOCC_OUTPUT_PATH)/index.html; \
 		echo "Copied index.html to $(DOCC_OUTPUT_PATH)/"; \
 	fi; \
 	echo ""; \
@@ -124,7 +124,16 @@ docc:
 			title=$$(grep '"title"' "$$dir/documentation.json" | head -1 | sed 's/.*"title"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'); \
 			description=$$(grep '"description"' "$$dir/documentation.json" | head -1 | sed 's/.*"description"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'); \
 			image=$$(grep '"image"' "$$dir/documentation.json" | head -1 | sed 's/.*"image"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'); \
-			printf "  {\n    \"title\": \"$$title\",\n    \"description\": \"$$description\",\n    \"image\": \"$$image\",\n    \"path\": \"$$folder/documentation/$$folder\"\n  }" >> $(DOCC_OUTPUT_PATH)/packages.json; \
+			zeroheight=$$(grep '"zeroheight"' "$$dir/documentation.json" | head -1 | sed 's/.*"zeroheight"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'); \
+			figma=$$(grep '"figma"' "$$dir/documentation.json" | head -1 | sed 's/.*"figma"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/'); \
+			printf "  {\n    \"title\": \"$$title\",\n    \"description\": \"$$description\",\n    \"image\": \"$$image\",\n    \"path\": \"$$folder/documentation/$$folder\"" >> $(DOCC_OUTPUT_PATH)/packages.json; \
+			if [ -n "$$zeroheight" ]; then \
+				printf ",\n    \"zeroheight\": \"$$zeroheight\"" >> $(DOCC_OUTPUT_PATH)/packages.json; \
+			fi; \
+			if [ -n "$$figma" ]; then \
+				printf ",\n    \"figma\": \"$$figma\"" >> $(DOCC_OUTPUT_PATH)/packages.json; \
+			fi; \
+			printf "\n  }" >> $(DOCC_OUTPUT_PATH)/packages.json; \
 		fi; \
 	done; \
 	printf "\n]\n" >> $(DOCC_OUTPUT_PATH)/packages.json; \
