@@ -13,7 +13,7 @@
       --card-border: #e0e0e0;
       --card-shadow: rgba(0, 0, 0, 0.1);
       --link-color: #7F3FC9;
-      --toggle-bg: #000000;
+      --toggle-bg: #129BDE;
       --toggle-icon: #666666;
       --subtitle-color: #666666;
     }
@@ -81,27 +81,36 @@
       text-decoration: underline;
     }
 
-    .footer-github {
+    .footer-links {
       margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
     }
 
-    .footer-github a {
-      color: var(--link-color);
-      text-decoration: none;
+    .footer-icon-button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 15px;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--card-border);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
     }
 
-    .footer-github a:hover {
-      text-decoration: underline;
+    .footer-icon-button:hover {
+      background: var(--link-color);
+      transform: scale(1.1);
     }
 
-    .footer-github img {
-      height: 20px;
-      width: 20px;
-      vertical-align: middle;
+    .footer-icon-button img {
+      width: 24px;
+      height: 24px;
+      display: block;
+      margin: auto;
     }
 
     .footer-copyright {
@@ -237,6 +246,7 @@
       width: 20px;
       height: 20px;
       display: block;
+      margin: auto;
     }
 
     @media (max-width: 768px) {
@@ -265,10 +275,15 @@
     <p class="footer-description">
       Spark is the Design System for <a href="https://www.leboncoin.fr/" target="_blank" rel="noopener noreferrer">Leboncoin</a>
     </p>
-    <div class="footer-github">
-      <a href="https://github.com/leboncoin/spark-ios" target="_blank" rel="noopener noreferrer">
+    <div class="footer-links">
+      <a href="https://github.com/leboncoin/spark-ios" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on GitHub">
         <img src="assets/light/github.svg" alt="GitHub" id="githubIcon">
-        View on GitHub
+      </a>
+      <a href="https://zeroheight.com/1186e1705" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on zeroheight">
+        <img src="assets/zeroheight.svg" alt="zeroheight">
+      </a>
+      <a href="https://main--69d967830091f4360fd30d22.chromatic.com/" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on Storybook">
+        <img src="assets/storybook.svg" alt="Storybook">
       </a>
     </div>
     <p class="footer-copyright">
