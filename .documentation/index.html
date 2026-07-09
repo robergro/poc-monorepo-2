@@ -13,7 +13,7 @@
       --card-border: #e0e0e0;
       --card-shadow: rgba(0, 0, 0, 0.1);
       --link-color: #7F3FC9;
-      --toggle-bg: #129BDE;
+      --toggle-bg: #333333;
       --toggle-icon: #666666;
       --subtitle-color: #666666;
     }
@@ -26,7 +26,7 @@
       --card-border: #3a3a3a;
       --card-shadow: rgba(0, 0, 0, 0.3);
       --link-color: #B89FE2;
-      --toggle-bg: #9d9d9d;
+      --toggle-bg: #129BDE;
       --toggle-icon: #e0e0e0;
       --subtitle-color: #999999;
     }
@@ -93,8 +93,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 8px;
       background: var(--card-border);
       transition: background-color 0.2s ease, transform 0.2s ease;
@@ -107,8 +107,8 @@
     }
 
     .footer-icon-button img {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       display: block;
       margin: auto;
     }
@@ -173,7 +173,6 @@
     .package-card a {
       text-decoration: none;
       color: inherit;
-      display: block;
     }
 
     .card-image-container {
@@ -258,7 +257,7 @@
 </head>
 <body>
   <div class="header-logo">
-    <img src="assets/spark.svg" alt="Spark">
+    <img src="assets/light/spark.svg" alt="Spark" id="sparkLogo">
   </div>
   <div class="header">
     <h1>ECommerce Monorepo Documentation</h1>
@@ -279,6 +278,9 @@
       <a href="https://github.com/leboncoin/spark-ios" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on GitHub">
         <img src="assets/light/github.svg" alt="GitHub" id="githubIcon">
       </a>
+      <a href="https://www.figma.com/design/0QchRdipAVuvVoDfTjLrgQ/Spark-Component-Specs?node-id=0-1" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on Figma">
+        <img src="assets/figma.svg" alt="Figma">
+      </a>
       <a href="https://zeroheight.com/1186e1705" class="footer-icon-button" target="_blank" rel="noopener noreferrer" title="View on zeroheight">
         <img src="assets/zeroheight.svg" alt="zeroheight">
       </a>
@@ -297,6 +299,7 @@
     const html = document.documentElement;
     const packageGrid = document.getElementById('packageGrid');
     const githubIcon = document.getElementById('githubIcon');
+    const sparkLogo = document.getElementById('sparkLogo');
     let themeImages = [];
 
     // Set current year
@@ -410,6 +413,14 @@
         const newSrc = theme === 'dark' ? img.dataset.dark : img.dataset.light;
         img.src = newSrc;
       });
+
+      // Update Spark logo
+      if (sparkLogo) {
+        const sparkLogoSrc = theme === 'dark'
+          ? 'assets/dark/spark.svg'
+          : 'assets/light/spark.svg';
+        sparkLogo.src = sparkLogoSrc;
+      }
 
       // Update GitHub icon
       if (githubIcon) {
