@@ -1,6 +1,6 @@
-# ``SparkComponentTemplates``
+# ``SparkComponent___COMPONENT_NAME___``
 
-The Spark Templates allow users to quickly specify a numerical value within a given range.
+TODO: 
 
 ## Overview
 
@@ -8,12 +8,12 @@ The component is available on **UIKit** and **SwiftUI** and requires at least **
 
 ### Implementation
 
-- On SwiftUI, you need to use the ``SparkTemplates`` View.
-- On UIKit, you need to use the ``SparkUITemplates``.
+- On SwiftUI, you need to use the ``Spark___COMPONENT_NAME___`` View.
+- On UIKit, you need to use the ``SparkUI___COMPONENT_NAME___``.
 
 ### Rendering
 
-![Component rendering.](component.png)
+![___COMPONENT_NAME___ rendering.](___component_name___.png)
 
 ### Resources
 

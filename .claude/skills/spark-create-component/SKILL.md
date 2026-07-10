@@ -19,14 +19,35 @@ The skill will:
 
 ## Input Parameters
 
-When executing this skill, gather the following information from the user:
-- **Component Name** (e.g., Button, Avatar) - PascalCase format
-- **Description** - Brief description for documentation
-- **Figma Link** - URL to the Figma design
-- **Zeroheight Link** - URL to the Zeroheight specifications
-- **Anatomy Image Path** - Local path to the anatomy image file
+When executing this skill, gather the required parameters one by one. Check if the user has already provided each piece of information. If not, ask the user for each parameter individually in a conversational message.
 
-If any parameter is missing, use `AskUserQuestion` to collect it.
+**Required Parameters (ask one at a time):**
+
+1. **Component Name** (PascalCase format)
+   - Examples: Button, Avatar, Chip, SegmentedControl
+   - Ask: "What is the component name? (PascalCase format, e.g., Button, Avatar, Chip)"
+
+2. **Description** (Brief description for documentation)
+   - Examples: "A customizable button component", "User profile image component"
+   - Ask: "What is the component description? (Brief description for documentation)"
+
+3. **Figma Link** (URL to the Figma design)
+   - Example: https://www.figma.com/design/0QchRdipAVuvVoDfTjLrgQ/Spark-Component-Specs?node-id=643-21226
+   - Ask: "What is the Figma link? (URL to the Figma design)"
+
+4. **Zeroheight Link** (URL to the Zeroheight specifications)
+   - Example: https://zeroheight.com/1186e1705/p/17568d-chip
+   - Ask: "What is the Zeroheight link? (URL to the Zeroheight specifications)"
+
+5. **Anatomy Image Path** (Local path to the anatomy image file)
+   - Example: /Users/username/Desktop/anatomy.png
+   - Ask: "What is the anatomy image path? (Local path to the anatomy image file)"
+
+**Important:**
+   - Do NOT use `AskUserQuestion` tool for gathering these parameters
+   - Ask for ONE parameter at a time in a conversational message
+   - Wait for the user to respond before asking for the next parameter
+   - Only proceed to the workflow steps once ALL parameters have been collected
 
 ## Workflow
 
@@ -66,7 +87,7 @@ Read `Dependencies/SparkComponent{ComponentName}/documentation.json` and update:
 - [ ] `description`: Set to the user-provided description
 - [ ] `figma`: Set to the Figma link
 - [ ] `zeroheight`: Set to the Zeroheight link
-- [ ] `image`: Set to component name in lowercase (e.g., "button")
+- [ ] `image`: Set to "spark" + component name in lowercase (e.g., "sparkbutton")
 
 ### Step 6: Update Documentation.md
 
