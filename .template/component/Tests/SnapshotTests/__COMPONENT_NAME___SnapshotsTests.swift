@@ -1,0 +1,3 @@
+import Testing
+@testable import __COMPONENT_NAME___Component
+import CommonTesting
