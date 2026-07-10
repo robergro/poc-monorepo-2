@@ -10,4 +10,4 @@ configurations:
     output: Sources/Testing/Generated/Sourcery.generated.swift
     args:
       autoMockableImports: [Combine]
-      autoMockableTestableImports: [SparkComponent__COMPONENT_NAME___]
+      autoMockableTestableImports: [ChipComponent]

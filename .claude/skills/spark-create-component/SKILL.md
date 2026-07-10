@@ -1,5 +1,5 @@
 ---
-name: spark-component-dependency
+name: spark-create-component
 description: Create a new component in the Dependencies folder from template with proper documentation and placeholders replacement.
 ---
 
@@ -66,7 +66,7 @@ Read `Dependencies/SparkComponent{ComponentName}/documentation.json` and update:
 - [ ] `description`: Set to the user-provided description
 - [ ] `figma`: Set to the Figma link
 - [ ] `zeroheight`: Set to the Zeroheight link
-- [ ] `image`: Set to component name in lowercase (e.g., "sparkbutton")
+- [ ] `image`: Set to component name in lowercase (e.g., "button")
 
 ### Step 6: Update Documentation.md
 
@@ -85,10 +85,10 @@ Read `Dependencies/SparkComponent{ComponentName}/Sources/Core/Documentation.docc
 - [ ] `README.md`
 - [ ] `documentation.json`
 - [ ] `Sources/Core/Documentation.docc/Documentation.md`
-- [ ] `Sources/Core/__COMPONENT_NAME___.swift`
-- [ ] `Sources/Testing/__COMPONENT_NAME___ComponentTesting.swift`
-- [ ] `Tests/UnitTests/__COMPONENT_NAME___Tests.swift`
-- [ ] `Tests/SnapshotTests/__COMPONENT_NAME___SnapshotsTests.swift`
+- [ ] `Sources/Core/Spark__COMPONENT_NAME___.swift`
+- [ ] `Sources/Testing/Spark__COMPONENT_NAME___Testing.swift`
+- [ ] `Tests/UnitTests/Spark__COMPONENT_NAME___Tests.swift`
+- [ ] `Tests/SnapshotTests/Spark__COMPONENT_NAME___SnapshotsTests.swift`
 - [ ] `.sourcery.yml`
 - [ ] Any other files containing placeholders
 
