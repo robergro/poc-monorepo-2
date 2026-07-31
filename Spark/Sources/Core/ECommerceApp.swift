@@ -1,6 +1,8 @@
+@_exported import Common
 @_exported import UserManagementComponent
 @_exported import ProductCatalogComponent
 @_exported import OrderManagementComponent
+@_exported import Resources
 
 /// A struct representing a complete shopping session
 /// Combines user, products, and order information from all three modules

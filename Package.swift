@@ -24,6 +24,10 @@ let package = Package(
             targets: ["Common"]
         ),
         .library(
+            name: "Resources",
+            targets: ["Resources"]
+        ),
+        .library(
             name: "CommonTesting",
             targets: ["CommonTesting"]
         ),
@@ -63,6 +67,7 @@ let package = Package(
             name: "ECommerceApp",
             dependencies: [
                 "Common",
+                "Resources",
                 "UserManagementComponent",
                 "ProductCatalogComponent",
                 "OrderManagementComponent",
@@ -132,11 +137,23 @@ let package = Package(
         //******
 
         //******
+        // Resources
+        .target(
+            name: "Resources",
+            path: "Resources",
+            resources: [
+                .process("Resources/")
+            ]
+        ),
+        //******
+
+        //******
         // OrderManagement
         .target(
             name: "OrderManagementComponent",
             dependencies: [
-                "Common"
+                "Common",
+                "Resources"
             ],
             path: "Dependencies/OrderManagementComponent/Sources/Core"
         ),
@@ -172,7 +189,8 @@ let package = Package(
         .target(
             name: "ProductCatalogComponent",
             dependencies: [
-                "Common"
+                "Common",
+                "Resources"
             ],
             path: "Dependencies/ProductCatalogComponent/Sources/Core"
         ),
@@ -208,7 +226,8 @@ let package = Package(
         .target(
             name: "UserManagementComponent",
             dependencies: [
-                "Common"
+                "Common",
+                "Resources"
             ],
             path: "Dependencies/UserManagementComponent/Sources/Core"
         ),
