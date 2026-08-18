@@ -4,13 +4,13 @@ Ce dossier contient les scripts d'automatisation pour la gestion des ressources 
 
 ## Scripts Disponibles
 
-### 1. `manage-icons-assets.swift`
+### 1. `generate-iconography-assets.swift`
 **Gestion des Assets d'Iconography**
 
 Importe et organise automatiquement les icônes SVG depuis un dossier source vers les assets Xcode.
 
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 📖 **Documentation complète** : [README-manage-icons-assets.md](./README-manage-icons-assets.md)
@@ -24,13 +24,13 @@ Importe et organise automatiquement les icônes SVG depuis un dossier source ver
 
 ---
 
-### 2. `generate-iconography.swift`
+### 2. `generate-iconography-codebase.swift`
 **Génération des Classes Swift d'Accès**
 
 Génère automatiquement les classes Swift type-safe pour accéder aux icônes.
 
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 📖 **Documentation complète** : [README-iconography.md](./README-iconography.md)
@@ -58,7 +58,7 @@ Pour mettre à jour les icônes du projet, suivez ces étapes dans l'ordre :
 Utilisez le script de gestion des assets pour importer vos SVG :
 
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 **Résultat** :
@@ -69,7 +69,7 @@ Utilisez le script de gestion des assets pour importer vos SVG :
 Générez les classes d'accès Swift :
 
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 **Résultat** :
@@ -102,8 +102,8 @@ Vérifiez que tout fonctionne :
 
 ```bash
 # Vérifier les assets
-ls Resources/Sources/Core/Resources/Iconography.xcassets/Global/*.imageset | wc -l
-ls Resources/Sources/Core/Resources/Iconography.xcassets/Criteria/*.imageset | wc -l
+ls Resources/Sources/Core/Assets/Iconography.xcassets/Global/*.imageset | wc -l
+ls Resources/Sources/Core/Assets/Iconography.xcassets/Criteria/*.imageset | wc -l
 
 # Vérifier le fichier généré
 cat Resources/Sources/Core/Iconography/Iconography+Generated.swift | head -50
@@ -133,8 +133,8 @@ Image.global(keyPath: \.addCircleFill)
 ```
 .script/
 ├── README.md                           # Ce fichier
-├── manage-icons-assets.swift           # Script d'import des icônes
-├── generate-iconography.swift          # Script de génération Swift
+├── generate-iconography-assets.swift           # Script d'import des icônes
+├── generate-iconography-codebase.swift          # Script de génération Swift
 ├── README-manage-icons-assets.md       # Doc du script d'import
 ├── README-iconography.md               # Doc du script de génération
 └── USAGE-EXAMPLE.md                    # Exemples d'utilisation des icônes
@@ -145,8 +145,8 @@ Image.global(keyPath: \.addCircleFill)
 ## Documentation Détaillée
 
 ### Scripts
-- [📖 manage-icons-assets.swift](./README-manage-icons-assets.md) - Import et organisation des SVG
-- [📖 generate-iconography.swift](./README-iconography.md) - Génération des classes Swift
+- [📖 generate-iconography-assets.swift](./README-manage-icons-assets.md) - Import et organisation des SVG
+- [📖 generate-iconography-codebase.swift](./README-iconography.md) - Génération des classes Swift
 
 ### Guides
 - [📖 Exemples d'Utilisation](./USAGE-EXAMPLE.md) - Comment utiliser les icônes dans UIKit et SwiftUI
@@ -190,8 +190,8 @@ Iconography.Criteria.shared.`class`        // ClassCriteria.svg
 3. Ajoutez "Criteria" au nom si c'est un critère
 4. Exécutez les deux scripts :
    ```bash
-   .script/manage-icons-assets.swift spark-token/iconography
-   .script/generate-iconography.swift
+   .script/generate-iconography-assets.swift spark-token/iconography
+   .script/generate-iconography-codebase.swift
    ```
 
 ### Créer une Nouvelle Catégorie
@@ -201,7 +201,7 @@ Pour ajouter une catégorie au-delà de Criteria/Global :
 1. Créez le dossier manuellement dans `Iconography.xcassets/`
 2. Ajoutez un `Contents.json` avec `provides-namespace: true`
 3. Ajoutez vos imagesets
-4. Lancez `generate-iconography.swift`
+4. Lancez `generate-iconography-codebase.swift`
 
 La nouvelle catégorie sera automatiquement détectée et intégrée.
 
@@ -222,7 +222,7 @@ La nouvelle catégorie sera automatiquement détectée et intégrée.
 **Solutions** :
 1. Vérifiez que le fichier généré est bien importé dans le projet
 2. Vérifiez qu'il n'y a pas de conflit de noms
-3. Relancez `generate-iconography.swift`
+3. Relancez `generate-iconography-codebase.swift`
 
 ### Problème : Les icônes sont en noir
 

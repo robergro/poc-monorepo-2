@@ -2,22 +2,22 @@
 
 /// Script to move icons from a folder of this repository to the assets
 /// Direct execution
-/// ```./.script/manage-icons-assets.swift spark-token/iconography```
+/// ```./.script/generate-iconography-assets.swift spark-token/iconography```
 /// Or
-/// ```swift .script/manage-icons-assets.swift spark-token/iconography```
+/// ```swift .script/generate-iconography-assets.swift spark-token/iconography```
 
 import Foundation
 
 // MARK: - Main Script
 
 guard CommandLine.arguments.count >= 2 else {
-    print("Usage: manage-icons-assets.swift <source-icons-path>")
-    print("Example: manage-icons-assets.swift spark-token/iconography")
+    print("Usage: generate-iconography-assets.swift <source-icons-path>")
+    print("Example: generate-iconography-assets.swift spark-token/iconography")
     exit(1)
 }
 
 let sourceIconsPath = CommandLine.arguments[1]
-let resourcesPath = "Resources/Sources/Core/Resources/Iconography.xcassets"
+let resourcesPath = "Resources/Sources/Core/Assets/Iconography.xcassets"
 let resourcesCriteriaPath = "\(resourcesPath)/Criteria"
 let resourcesGlobalPath = "\(resourcesPath)/Global"
 

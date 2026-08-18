@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-public struct ImageAsset {
+public struct ImageAsset: Sendable {
 
     // MARK: - Properties
 

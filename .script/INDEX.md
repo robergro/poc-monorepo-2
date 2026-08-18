@@ -16,14 +16,14 @@ Documentation complète des scripts de gestion des icônes du projet.
 
 ## 🛠️ Scripts
 
-### [manage-icons-assets.swift](./manage-icons-assets.swift)
+### [generate-iconography-assets.swift](./generate-iconography-assets.swift)
 Script d'import et d'organisation des icônes SVG vers les assets Xcode.
 
 **Documentation** : [README-manage-icons-assets.md](./README-manage-icons-assets.md)
 
 **Usage** :
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 **Rôle** :
@@ -34,14 +34,14 @@ Script d'import et d'organisation des icônes SVG vers les assets Xcode.
 
 ---
 
-### [generate-iconography.swift](./generate-iconography.swift)
+### [generate-iconography-codebase.swift](./generate-iconography-codebase.swift)
 Script de génération des classes Swift type-safe pour accéder aux icônes.
 
 **Documentation** : [README-iconography.md](./README-iconography.md)
 
 **Usage** :
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 **Rôle** :
@@ -86,18 +86,18 @@ Script de génération des classes Swift type-safe pour accéder aux icônes.
 
 1. **Lire** : [README.md](./README.md)
 2. **Comprendre** : [WORKFLOW.md](./WORKFLOW.md)
-3. **Importer** : Exécuter `manage-icons-assets.swift`
-4. **Générer** : Exécuter `generate-iconography.swift`
+3. **Importer** : Exécuter `generate-iconography-assets.swift`
+4. **Générer** : Exécuter `generate-iconography-codebase.swift`
 5. **Utiliser** : Consulter [USAGE-EXAMPLE.md](./USAGE-EXAMPLE.md)
 
 ### Référence Rapide
 
 ```bash
 # Import des icônes
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 
 # Génération du code Swift
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 
 # Utilisation dans le code
 UIImage.global(keyPath: \.addCircleFill)           // UIKit
@@ -115,8 +115,8 @@ Image.global(keyPath: \.addCircleFill)              // SwiftUI
 ├── README.md                             ← Point d'entrée principal
 │
 ├── Scripts Swift
-│   ├── manage-icons-assets.swift         ← Import des SVG
-│   └── generate-iconography.swift        ← Génération Swift
+│   ├── generate-iconography-assets.swift         ← Import des SVG
+│   └── generate-iconography-codebase.swift        ← Génération Swift
 │
 ├── Documentation des Scripts
 │   ├── README-manage-icons-assets.md     ← Doc import

@@ -4,7 +4,7 @@ Ce script Swift automatise le processus d'importation et d'organisation des icô
 
 ## Description
 
-Le script `manage-icons-assets.swift` effectue les opérations suivantes :
+Le script `generate-iconography-assets.swift` effectue les opérations suivantes :
 
 1. **Nettoie** les dossiers Criteria et Global existants
 2. **Importe** tous les fichiers SVG depuis un dossier source
@@ -20,19 +20,19 @@ Le script `manage-icons-assets.swift` effectue les opérations suivantes :
 ### Syntaxe
 
 ```bash
-.script/manage-icons-assets.swift <source-icons-path>
+.script/generate-iconography-assets.swift <source-icons-path>
 ```
 
 ou
 
 ```bash
-swift .script/manage-icons-assets.swift <source-icons-path>
+swift .script/generate-iconography-assets.swift <source-icons-path>
 ```
 
 ### Exemple
 
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 ### Paramètres
@@ -123,7 +123,7 @@ Ajoute un `Contents.json` aux dossiers de catégories pour activer les namespace
 Après exécution, la structure des assets est :
 
 ```
-Resources/Sources/Core/Resources/Iconography.xcassets/
+Resources/Sources/Core/Assets/Iconography.xcassets/
 ├── Contents.json
 ├── Criteria/
 │   ├── Contents.json
@@ -161,18 +161,18 @@ Placez tous vos fichiers SVG dans un dossier (ex: `spark-token/iconography`).
 
 ### 3. Exécuter le Script de Gestion
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 ### 4. Générer les Classes Swift
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 ### 5. Vérifier
 ```bash
 # Vérifier les catégories créées
-ls Resources/Sources/Core/Resources/Iconography.xcassets/
+ls Resources/Sources/Core/Assets/Iconography.xcassets/
 
 # Vérifier le fichier généré
 cat Resources/Sources/Core/Extension/Generated/Iconography+Generated.swift
@@ -180,7 +180,7 @@ cat Resources/Sources/Core/Extension/Generated/Iconography+Generated.swift
 
 ### 6. Commiter
 ```bash
-git add Resources/Sources/Core/Resources/Iconography.xcassets/
+git add Resources/Sources/Core/Assets/Iconography.xcassets/
 git add Resources/Sources/Core/Extension/Generated/Iconography+Generated.swift
 git commit -m "Update iconography assets"
 ```

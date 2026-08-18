@@ -7,7 +7,7 @@ Ce script Swift génère automatiquement les classes d'accès à l'iconography �
 Pour générer les fichiers Swift d'accès à l'iconography :
 
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 ## Sortie

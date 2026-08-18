@@ -140,9 +140,9 @@ let package = Package(
         // Resources
         .target(
             name: "Resources",
-            path: "Resources",
+            path: "Resources/Sources/Core",
             resources: [
-                .process("Resources/")
+                .process("Assets")
             ]
         ),
         //******

@@ -17,7 +17,7 @@ Ce document détaille le workflow complet pour gérer les icônes dans le projet
 └────────┬─────────┘
          │
          │ Step 1: Import & Organization
-         │ .script/manage-icons-assets.swift
+         │ .script/generate-iconography-assets.swift
          ▼
 ┌──────────────────────────────────────┐
 │  Iconography.xcassets                │
@@ -36,7 +36,7 @@ Ce document détaille le workflow complet pour gérer les icônes dans le projet
 └────────┬─────────────────────────────┘
          │
          │ Step 2: Code Generation
-         │ .script/generate-iconography.swift
+         │ .script/generate-iconography-codebase.swift
          ▼
 ┌──────────────────────────────────────┐
 │  Iconography+Generated.swift         │
@@ -91,11 +91,11 @@ spark-token/iconography/
 
 ### Phase 2 : Import et Organisation
 
-**Script** : `manage-icons-assets.swift`
+**Script** : `generate-iconography-assets.swift`
 
 **Commande** :
 ```bash
-.script/manage-icons-assets.swift spark-token/iconography
+.script/generate-iconography-assets.swift spark-token/iconography
 ```
 
 **Opérations** :
@@ -160,11 +160,11 @@ Iconography.xcassets/
 
 ### Phase 3 : Génération du Code Swift
 
-**Script** : `generate-iconography.swift`
+**Script** : `generate-iconography-codebase.swift`
 
 **Commande** :
 ```bash
-.script/generate-iconography.swift
+.script/generate-iconography-codebase.swift
 ```
 
 **Opérations** :
@@ -294,7 +294,7 @@ struct MyView: View {
 │ ÉTAPE 2 : Import automatique                                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │ Commande:                                                           │
-│ $ .script/manage-icons-assets.swift spark-token/iconography        │
+│ $ .script/generate-iconography-assets.swift spark-token/iconography        │
 │                                                                     │
 │ Actions:                                                            │
 │ ✓ Nettoyage des dossiers existants                                │
@@ -310,7 +310,7 @@ struct MyView: View {
 │ ÉTAPE 3 : Génération du code Swift                                 │
 ├─────────────────────────────────────────────────────────────────────┤
 │ Commande:                                                           │
-│ $ .script/generate-iconography.swift                               │
+│ $ .script/generate-iconography-codebase.swift                               │
 │                                                                     │
 │ Actions:                                                            │
 │ ✓ Scan de Iconography.xcassets                                    │
@@ -343,13 +343,13 @@ struct MyView: View {
 - [ ] Les SVG sont valides et optimisés
 
 ### Import
-- [ ] Exécuter `manage-icons-assets.swift`
+- [ ] Exécuter `generate-iconography-assets.swift`
 - [ ] Vérifier le nombre d'icônes importées
 - [ ] Vérifier les dossiers Criteria et Global
 - [ ] Vérifier quelques imagesets manuellement
 
 ### Génération
-- [ ] Exécuter `generate-iconography.swift`
+- [ ] Exécuter `generate-iconography-codebase.swift`
 - [ ] Vérifier le fichier généré
 - [ ] Vérifier le nombre de lignes (~640)
 - [ ] Vérifier quelques propriétés
