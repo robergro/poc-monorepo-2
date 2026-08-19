@@ -12,6 +12,9 @@ concurrency:
   group: '${{ github.workflow }}-${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
   cancel-in-progress: true
 
+env:
+  swift_version: "6.2"
+
 jobs:
   pr-icon-updates:
     # Detect recursive calls based on last commit message
